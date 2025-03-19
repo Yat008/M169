@@ -1,2 +1,2 @@
-# M169
+# M169 Mini-Projekt
 Docker Webseite
