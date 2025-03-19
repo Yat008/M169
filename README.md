@@ -12,14 +12,14 @@ Dieses Projekt richtet einen **NGINX-Webserver** in einem **Docker-Container** e
 
 ### 1️⃣ Repository klonen
 ```sh
-git clone https://github.com/your-username/mini-project.git
-cd mini-project
+git clone https://github.com/Yat008/M169/
+cd M169
 ```
 
 ### 2️⃣ Projektstruktur
 Stellen Sie sicher, dass Ihr Verzeichnis wie folgt aussieht:
 ```
-mini-project/
+M169/
 │── Dockerfile
 │── website/
 │   ├── index.html
