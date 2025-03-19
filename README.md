@@ -1,45 +1,53 @@
-# Mini-Project
+# Mini Web Server Project
 
-This project sets up an **NGINX web server** inside a **Docker container** to serve a simple static website. The setup includes mounting local directories for website files and logs.
+Dieses Projekt richtet einen **NGINX-Webserver** in einem **Docker-Container** ein, um eine einfache statische Website bereitzustellen. 
 
-## 📌 Requirements
-- Docker installed
-- (Optional) Docker Compose installed
-- Git (for version control and pushing to GitHub/GitLab)
+## 📌 Voraussetzungen
+- Docker installiert
+- Git (für Versionskontrolle und Upload zu GitHub/GitLab)
 
 ---
 
-## 🚀 Setup Instructions
+## 🚀 Setup-Anleitung
 
-### 1️⃣ Clone the Repository
+### 1️⃣ Repository klonen
 ```sh
 git clone https://github.com/your-username/mini-project.git
 cd mini-project
 ```
 
-### 2️⃣ Project Structure
-Ensure your directory has the following structure:
+### 2️⃣ Projektstruktur
+Stellen Sie sicher, dass Ihr Verzeichnis wie folgt aussieht:
 ```
 mini-project/
 │── Dockerfile
 │── website/
 │   ├── index.html
 │   ├── styles.css
-│── logs/   (this will store logs)
+│── logs/   (dieses Verzeichnis speichert Logs)
 │── README.md
+```
+
+👉 **Hinweis:** Git erlaubt keine leeren Ordner. Um `logs/` im Repository zu behalten, fügen Sie eine leere `.gitkeep`-Datei hinzu:
+```sh
+touch logs/.gitkeep
+```
+Dann das Verzeichnis committen:
+```sh
+git add logs/.gitkeep
 ```
 
 ---
 
-## 📦 Build and Run
+## 📦 Docker-Build und Start
 
-### 🏗️ Using Docker
-#### 1. Build the Docker image:
+### 🏗️ Container erstellen und starten
+#### 1. Docker-Image bauen:
 ```sh
 docker build -t my-webserver .
 ```
 
-#### 2. Run the container:
+#### 2. Container starten:
 ```sh
 docker run -d -p 8080:80 \
     -v $(pwd)/website:/usr/share/nginx/html \
@@ -47,57 +55,71 @@ docker run -d -p 8080:80 \
     --name my-webserver my-webserver
 ```
 
-#### 3. Open in browser:
+#### 3. Website im Browser öffnen:
 ```
 http://localhost:8080
 ```
 
-#### 4. View logs:
+#### 4. Logs anzeigen:
 ```sh
 docker logs my-webserver
 ```
 
-#### 5. Stop the container:
+#### 5. Container stoppen:
 ```sh
 docker stop my-webserver
 ```
 
-#### 6. Remove the container (optional):
+#### 6. Container entfernen (optional):
 ```sh
 docker rm my-webserver
 ```
 
 ---
 
-### Stop the container:
-```sh
-docker-compose down
-```
-
----
-
-## 📝 Dockerfile (Web Server Setup)
+## 📝 Dockerfile (Webserver-Setup)
 
 ```dockerfile
-# Use the official NGINX base image
+# Offizielles NGINX-Image verwenden
 FROM nginx:latest
 
-# Set working directory
+# Arbeitsverzeichnis setzen
 WORKDIR /usr/share/nginx/html
 
-# Copy website files to the container
+# Website-Dateien in den Container kopieren
 COPY ./website/ /usr/share/nginx/html/
 
-# Expose port 8080
+# Port 8080 freigeben
 EXPOSE 8080
 
-# Start NGINX
+# NGINX starten
 CMD ["nginx", "-g", "daemon off;"]
 ```
 
 ---
 
-## 🔄 Push to GitHub/GitLab
+## 🌐 Beispiel `index.html`
+Speichern Sie folgende Datei unter `website/index.html`:
+
+```html
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mein Mini-Projekt</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Willkommen auf meinem Webserver!</h1>
+    <p>Diese einfache Webseite läuft in einem Docker-Container.</p>
+</body>
+</html>
+```
+
+---
+
+## 🔄 Repository zu GitHub/GitLab hochladen
 
 ```sh
 git init
@@ -108,10 +130,18 @@ git remote add origin https://github.com/your-username/mini-project.git
 git push -u origin main
 ```
 
-Share the repository URL with your instructor.
+👉 **Leeren Ordner (`logs/`) beibehalten:**
+Falls Sie einen leeren Ordner zu GitHub hochladen möchten, fügen Sie eine `.gitkeep`-Datei hinzu:
+```sh
+touch logs/.gitkeep
+```
+Dann committen:
+```sh
+git add logs/.gitkeep
+```
 
 ---
 
-## ✅ Conclusion
-This setup provides a lightweight **NGINX web server** inside a **Docker container**, making it easy to host a static website. Happy coding! 🚀
+## ✅ Fazit
+Dieses Setup stellt eine **NGINX-Webserver-Umgebung** innerhalb eines **Docker-Containers** bereit, um eine statische Webseite zu hosten. Viel Erfolg! 🚀
 
