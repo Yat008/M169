@@ -126,7 +126,3 @@ Dieses Projekt bietet eine einfache und effektive Möglichkeit, eine statische W
 
 ## Autor
 [Yat008](https://github.com/Yat008)
-
-## Lizenz
-Dieses Projekt ist unter der MIT-Lizenz lizenziert.
-
